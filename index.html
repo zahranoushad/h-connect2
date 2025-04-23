@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H Connect</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #007BFF; color: white; padding: 20px 0; text-align: center; }
+    section { padding: 20px; margin: 10px; background: white; border-radius: 10px; }
+    h2 { color: #007BFF; }
+    .list-item { cursor: pointer; color: #007BFF; }
+    .hidden { display: none; }
+    .bold { font-weight: bold; font-size: 24px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="bold">Welcome to H Connect</div>
+    <div>Your Health, Our Priority</div>
+  </header>
+
+  <section id="hospitals">
+    <h2>Hospitals</h2>
+    <ul>
+      <li class="list-item" onclick="showHospitalDetails('City Hospital')">City Hospital</li>
+      <li class="list-item" onclick="showHospitalDetails('Metro Medical Center')">Metro Medical Center</li>
+      <li class="list-item" onclick="showHospitalDetails('Sunrise Clinic')">Sunrise Clinic</li>
+      <li class="list-item" onclick="showHospitalDetails('Green Valley Hospital')">Green Valley Hospital</li>
+      <li class="list-item" onclick="showHospitalDetails('St. Mary's Hospital')">St. Mary's Hospital</li>
+      <li class="list-item" onclick="showHospitalDetails('Apollo Health')">Apollo Health</li>
+      <li class="list-item" onclick="showHospitalDetails('Hopewell Hospital')">Hopewell Hospital</li>
+      <li class="list-item" onclick="showHospitalDetails('Royal Care Hospital')">Royal Care Hospital</li>
+      <li class="list-item" onclick="showHospitalDetails('Santhwana Clinic')">Santhwana Clinic</li>
+      <li class="list-item" onclick="showHospitalDetails('Trinity Medical')">Trinity Medical</li>
+    </ul>
+  </section>
+
+  <section id="doctors">
+    <h2>Doctors</h2>
+    <ul>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Asha Kumar')">Dr. Asha Kumar</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Ravi Menon')">Dr. Ravi Menon</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Meera Pillai')">Dr. Meera Pillai</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Arjun Varma')">Dr. Arjun Varma</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Sulekha Nair')">Dr. Sulekha Nair</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Biju Mathew')">Dr. Biju Mathew</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Fathima Basheer')">Dr. Fathima Basheer</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. John Dsilva')">Dr. John Dsilva</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Anjali Rajan')">Dr. Anjali Rajan</li>
+      <li class="list-item" onclick="showDoctorDetails('Dr. Thomas Zachariah')">Dr. Thomas Zachariah</li>
+    </ul>
+  </section>
+
+  <section id="details" class="hidden">
+    <h2>Details</h2>
+    <div id="details-content"></div>
+    <button onclick="goBack()">Back</button>
+  </section>
+
+  <section id="appointment">
+    <h2>Book an Appointment</h2>
+    <form onsubmit="submitAppointment(event)">
+      <label>Hospital Name: <input type="text" name="hospital"></label><br><br>
+      <label>Doctor Name: <input type="text" name="doctor"></label><br><br>
+      <label>Appointment Time: <input type="datetime-local" name="time"></label><br><br>
+      <button type="submit">Book Appointment</button>
+    </form>
+  </section>
+
+  <script>
+    function showDoctorDetails(name) {
+      document.getElementById('hospitals').classList.add('hidden');
+      document.getElementById('doctors').classList.add('hidden');
+      document.getElementById('appointment').classList.add('hidden');
+      document.getElementById('details').classList.remove('hidden');
+      document.getElementById('details-content').innerText = `${name} is available at City Hospital and Metro Medical Center. Timings: 9 AM - 12 PM, 5 PM - 7 PM.`;
+    }
+
+    function showHospitalDetails(name) {
+      document.getElementById('hospitals').classList.add('hidden');
+      document.getElementById('doctors').classList.add('hidden');
+      document.getElementById('appointment').classList.add('hidden');
+      document.getElementById('details').classList.remove('hidden');
+      document.getElementById('details-content').innerText = `${name} is located at MG Road, Kochi. Reviews: ★★★★☆. Doctors: Dr. Asha Kumar, Dr. Arjun Varma. Timings: 8 AM - 8 PM.`;
+    }
+
+    function goBack() {
+      document.getElementById('details').classList.add('hidden');
+      document.getElementById('hospitals').classList.remove('hidden');
+      document.getElementById('doctors').classList.remove('hidden');
+      document.getElementById('appointment').classList.remove('hidden');
+    }
+
+    function submitAppointment(event) {
+      event.preventDefault();
+      alert('Appointment booked successfully!');
+    }
+  </script>
+
+</body>
+</html>
